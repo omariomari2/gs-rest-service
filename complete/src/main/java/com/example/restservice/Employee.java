@@ -1,11 +1,35 @@
 package com.example.restservice;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "employee")
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
+    private Long id;
+
+    @Column(name = "employee_id", unique = true)
     private String employee_id;
+
+    @Column(name = "first_name")
     private String first_name;
+
+    @Column(name = "last_name")
     private String last_name;
+
+    @Column(name = "email")
     private String email;
+
+    @Column(name = "title")
     private String title;
 
     public Employee() {
@@ -17,6 +41,14 @@ public class Employee {
         this.last_name = last_name;
         this.email = email;
         this.title = title;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getEmployee_id() {

@@ -23,8 +23,8 @@ public class EmployeeController {
 
     @PostMapping("/employees")
     public ResponseEntity<Employee> addEmployee(@RequestBody Employee employee) {
-        employeeManager.addEmployee(employee);
-        return ResponseEntity.status(HttpStatus.CREATED).body(employee);
+        Employee savedEmployee = employeeManager.addEmployee(employee);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedEmployee);
     }
 }
 
